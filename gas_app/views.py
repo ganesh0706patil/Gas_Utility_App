@@ -81,7 +81,6 @@ def booking(request):
             messages.error(request, "All fields are required.")
             return redirect('booking')
 
-        # ✅ Create booking
         booking = Booking.objects.create(
             user=request.user,
             service_type=service_type,
@@ -90,7 +89,6 @@ def booking(request):
             status=BookingStatus.PENDING  # Default status
         )
 
-        # ✅ Ensure a StatusTracking entry is created only once
         tracking_entry, created = StatusTracking.objects.get_or_create(
             booking=booking,
             defaults={
