@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% load custom_filters %}
+
+{% block content %}
+    <div class="max-w-lg mx-auto bg-darkCard shadow-lg rounded-lg p-6 mt-10">
+        <h2 class="text-2xl font-semibold text-center text-accent">Track Your Requests</h2>
+
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="mt-4 p-3 bg-gray-800 text-white rounded">
+                    <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+                    <p><strong>Service:</strong> {{ booking.service_type }}</p>
+
+                    {% with tracking=tracking_info|get_item:booking.id %}
+                        {% if tracking %}
+                            <p><strong>Status:</strong> {{ tracking.status }}</p>
+                            <p><strong>Progress:</strong> {{ tracking.progress }}</p>
+                        {% else %}
+                            <p><strong>Status:</strong> Pending</p>
+                            <p><strong>Progress:</strong> No updates yet.</p>
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <a href="{% url 'booking_detail' booking.id %}" class="text-accent">View Details</a>
+                </div>
+            {% empty %}
+                <p>You have no bookings yet.</p>
+            {% endfor %}
+        {% else %}
+            <p>You have no bookings yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}

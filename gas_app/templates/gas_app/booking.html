@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Book a Service{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto bg-darkCard shadow-lg rounded-lg p-6 mt-10">
+    <h2 class="text-2xl font-semibold text-center text-accent">Book a Gas Service</h2>
+    
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        
+        <!-- Service Type -->
+        <div class="mb-4">
+            <label class="block text-gray-400">Service Type</label>
+            <select name="service_type" class="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white">
+                <option value="LPG Refill">LPG Refill</option>
+                <option value="New Connection">New Connection</option>
+                <option value="Maintenance">Maintenance</option>
+                <option value="Safety Check">Safety Check</option>
+            </select>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-4">
+            <label class="block text-gray-400">Address</label>
+            <textarea name="address" rows="3" class="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white"></textarea>
+        </div>
+
+        <!-- Contact Number -->
+        <div class="mb-4">
+            <label class="block text-gray-400">Contact Number</label>
+            <input type="text" name="contact_number" class="w-full p-2 border border-gray-700 rounded bg-gray-800 text-white">
+        </div>
+
+        <!-- Submit Button -->
+        <button class="w-full bg-accent text-white py-2 rounded">Book Service</button>
+    </form>
+</div>
+{% endblock %}

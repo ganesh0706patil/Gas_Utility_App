@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% load static %}  <!-- Add this line to load static files -->
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="container mx-auto mt-10 flex flex-col items-center">
+
+    <!-- Welcome Message -->
+    <h1 class="text-3xl text-center font-bold mb-6 text-white">Welcome to the Gas Utility Service</h1>
+    <p class="text-lg text-gray-400 mb-10 text-center">Book services, track requests, and get customer support with ease.</p>
+
+    <!-- 3 Options Section (Booking, Status, Support) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Booking Option -->
+        <div class="bg-darkCard rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300">
+            <a href="{% url 'booking' %}" class="block text-center">
+                <h2 class="text-xl font-semibold text-white">Book Service</h2>
+                <p class="text-gray-400 mt-2">Request a new service or schedule a visit</p>
+            </a>
+        </div>
+
+        <!-- Track Status Option -->
+        <div class="bg-darkCard rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300">
+            <a href="{% url 'status' %}" class="block text-center">
+                <h2 class="text-xl font-semibold text-white">Track Status</h2>
+                <p class="text-gray-400 mt-2">Check the status of your service requests</p>
+            </a>
+        </div>
+
+        <!-- Support Option -->
+        <div class="bg-darkCard rounded-lg shadow-lg p-6 hover:scale-105 transition-transform duration-300">
+            <a href="{% url 'support' %}" class="block text-center">
+                <h2 class="text-xl font-semibold text-white">Customer Support</h2>
+                <p class="text-gray-400 mt-2">Get help with any issues or inquiries</p>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
